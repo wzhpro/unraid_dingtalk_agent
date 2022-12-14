@@ -1,0 +1,9 @@
+#!/bin/bash
+token=''
+curl 'https://oapi.dingtalk.com/robot/send?access_token='$token \
+ -H 'Content-Type: application/json' \
+ -d @<(cat <<EOF
+ {"msgtype": "text","text": {"content":"unraid Alert\n\nEvent: ${EVENT}\n\nSubject: ${SUBJECT}\n\nDescription: ${DESCRIPTION}\n\nImportance: ${I
+MPORTANCE}\n\nTime: $(date '+%Y-%m-%d %H:%M:%S')\n\n${CONTENT}"}}
+EOF
+)
